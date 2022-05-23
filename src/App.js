@@ -1,10 +1,18 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Home from './Pages/Home/Home';
 
 function App() {
   return (
     <div>
-        <h2>Hellow World</h2>
+
+        <Routes>
+          <Route path='/' element={<Home></Home>}></Route>
+
+
+        </Routes>
+        {/* <h2 className='text-3xl'>Hellow World</h2>
+        <button className='btn btn-primary text-white bg-gradient-to-r from-primary to-secondary'>Button</button> */}
     </div>
   );
 }
