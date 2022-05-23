@@ -1,20 +1,54 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { BiShowAlt, BiHide } from "react-icons/bi";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 import SocialGoogle from './SocialGoogle';
+import { useAuthState, useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { async } from '@firebase/util';
+import Loading from '../Shared/Loading';
+
 
 const Signup = () => {
 	const { register, formState: { errors }, handleSubmit } = useForm();
 	const [show1, setShow1] = useState(false);
+	const navigate = useNavigate();
+	const [
+		createUserWithEmailAndPassword,
+		emailUser,
+		emailLoading,
+		emailError,
+	  ] = useCreateUserWithEmailAndPassword(auth);
+	
+	const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+	const [user, loading, error] = useAuthState(auth);
 
-	const onSubmit = data => {
-		console.log(data);
+	let errorElement;
+	if(emailError){
+		errorElement = <div>
+			<p className='label-text-alt text-red-600 mb-1 ml-1'>{emailError?.message}</p>
+		</div>
+	}
+	
+	if(emailLoading || updating || loading){
+		return <Loading></Loading>;
+	}
+
+	if(user?.displayName) {
+		return navigate('/');
+	}
+	
+	
+	const onSubmit =async data => {
+		errorElement=''
+		await createUserWithEmailAndPassword(data.email, data.password);
+		alert('Your Account Registered');
+		await updateProfile({displayName: data.name})
 	}
 
 	return (
 		<div className='flex justify-center flex-col items-center my-20'>
-			<h2 className='text-3xl font-black mb-8'>Tools Master</h2>
+			<h2 onClick={()=> navigate('/')} className='text-3xl font-black mb-8 cursor-pointer'>Tools Master</h2>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div class="card flex-shrink-0 w-full md:w-screen lg:w-screen max-w-sm shadow-lg bg-white px-4">
 					<div class="card-body">
@@ -85,7 +119,7 @@ const Signup = () => {
 								},
 								minLength: {
 									value: 6,
-									message: 'Password must be Character or longer'
+									message: 'Password must be 6 Character or longer'
 								}
 							})}
 							/>
@@ -94,8 +128,11 @@ const Signup = () => {
 								{errors.password?.type === 'minLength' && <span class="label-text-alt text-red-500">{errors.password.message}</span>}
 							</label>
 						</div>
+						{
+							errorElement
+						}
 						<div class="form-control mt-2">
-							<button type='submit' class="btn btn-accent text-white">Login</button>
+							<button type='submit' class="btn btn-accent text-white">SIgnup</button>
 						</div>
 						<p className='label-text-alt ml-1 text-center'>Already have an account? <Link to='/login' className='text-blue-800 underline'>Log in</Link></p>
 

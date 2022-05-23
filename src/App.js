@@ -4,6 +4,8 @@ import Blogs from './Pages/Blogs/Blogs';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import Signup from './Pages/Login/Signup';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -18,6 +20,9 @@ function App() {
         </Routes>
         {/* <h2 className='text-3xl'>Hellow World</h2>
         <button className='btn btn-primary text-white bg-gradient-to-r from-primary to-secondary'>Button</button> */}
+
+
+      <ToastContainer />    
     </div>
   );
 }
