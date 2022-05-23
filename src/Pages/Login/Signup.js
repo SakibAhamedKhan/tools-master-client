@@ -7,6 +7,7 @@ import SocialGoogle from './SocialGoogle';
 import { useAuthState, useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { async } from '@firebase/util';
 import Loading from '../Shared/Loading';
+import useToken from '../../Hooks/useToken';
 
 
 const Signup = () => {
@@ -23,6 +24,10 @@ const Signup = () => {
 	const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 	const [user, loading, error] = useAuthState(auth);
 
+	  
+	const [token] = useToken();
+	console.log(token);
+
 	let errorElement;
 	if(emailError){
 		errorElement = <div>
@@ -34,7 +39,7 @@ const Signup = () => {
 		return <Loading></Loading>;
 	}
 
-	if(user?.displayName) {
+	if(token) {
 		return navigate('/');
 	}
 	
@@ -42,7 +47,6 @@ const Signup = () => {
 	const onSubmit =async data => {
 		errorElement=''
 		await createUserWithEmailAndPassword(data.email, data.password);
-		alert('Your Account Registered');
 		await updateProfile({displayName: data.name})
 	}
 

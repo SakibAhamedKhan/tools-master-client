@@ -3,7 +3,7 @@ import React from 'react';
 const HomeTool = ({tool}) => {
 	const {_id, name, image, description, min_quantity, available_quantity, price} = tool;
 	return (
-		<div class="card w-fit bg-white shadow-xl border-2 border-white border-dashed hover:border-primary ">
+		<div class="card w-fit bg-white shadow-xl border-2 border-white border-dashed hover:border-primary rounded-md">
 			<figure className='h-48'><img className='mt-10' src={image} alt="Shoes" /></figure>
 			<div class="card-body">
 					<h2 class="card-title">{name}</h2>

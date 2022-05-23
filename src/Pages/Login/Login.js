@@ -6,6 +6,7 @@ import { BiShowAlt, BiHide } from "react-icons/bi";
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import useToken from '../../Hooks/useToken';
 import Loading from '../Shared/Loading';
 import SocialGoogle from './SocialGoogle';
 
@@ -25,7 +26,8 @@ const Login = () => {
 	const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(auth);
 
 	let errorElement;
-
+	const [token] = useToken();
+	
 	if(error){
 		errorElement = <div>
 			<p className='label-text-alt text-red-600 mb-1 ml-1'>{error?.message}</p>
@@ -36,7 +38,7 @@ const Login = () => {
 		return <Loading></Loading>;
 	}
 
-	if(user) {
+	if(token) {
 		return navigate('/');
 	}
 

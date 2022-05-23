@@ -1,16 +1,20 @@
 import React from 'react';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Navigate, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../Hooks/useToken';
 
 const SocialGoogle = () => {
-	const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+	const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+	const [user, loading, error] = useAuthState(auth);
 	const navigate = useNavigate();
 
-	if(loading) {
+	const [token] = useToken();
+
+	if(loading || gLoading) {
 		return <p className='text-center'>Loading...</p>;
 	}
-	if(user) {
+	if(token) {
 		return navigate('/');
 	}
 
