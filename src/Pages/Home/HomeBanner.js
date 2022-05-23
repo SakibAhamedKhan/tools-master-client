@@ -1,9 +1,18 @@
 import React from 'react';
+import banner1 from '../../Assets/images/banner1.jpg';
+import banner2 from '../../Assets/images/banner2.jpg';
 
 const HomeBanner = () => {
 	return (
-		<div>
-			<h2>Home Banner</h2>
+		<div class="hero min-h-screen" style={{backgroundImage: `url(${banner2})`}}>
+			<div class="hero-overlay bg-opacity-60"></div>
+			<div class="hero-content text-center text-neutral-content">
+				<div class="max-w-md">
+					<h1 class="mb-5 text-5xl font-bold text-white">Tools Need?</h1>
+					<p class="mb-5 text-white">We provide the best quality tools all over the world</p>
+					<button class="btn btn-primary text-white">Get Started</button>
+				</div>
+			</div>
 		</div>
 	);
 };
