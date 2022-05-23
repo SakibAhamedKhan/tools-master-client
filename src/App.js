@@ -6,6 +6,7 @@ import Login from './Pages/Login/Login';
 import Signup from './Pages/Login/Signup';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PurchasePage from './Pages/PurchasePage/PurchasePage';
 
 function App() {
   return (
@@ -16,6 +17,13 @@ function App() {
           <Route path='blogs' element={<Blogs></Blogs>}></Route>
           <Route path='login' element={<Login></Login>}></Route>
           <Route path='signup' element={<Signup></Signup>}></Route>
+          <Route path='purchase/:tool_Id' element={<PurchasePage></PurchasePage>}></Route>
+
+
+
+
+
+
 
         </Routes>
         {/* <h2 className='text-3xl'>Hellow World</h2>
