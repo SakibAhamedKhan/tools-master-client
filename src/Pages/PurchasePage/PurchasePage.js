@@ -8,6 +8,7 @@ import Loading from '../Shared/Loading';
 import {RiAddFill} from 'react-icons/ri';
 import {IoMdRemove} from 'react-icons/io'
 import Footer from '../Shared/Footer';
+import { toast } from 'react-toastify';
 
 const PurchasePage = () => {
 	const {tool_Id} = useParams();
@@ -59,6 +60,38 @@ const PurchasePage = () => {
 		}
 	}
 
+	const handlePurchase = (event) => {
+		event.preventDefault();
+		alert(`
+			quantity: ${quantity}
+			name: ${user.displayName}
+			email: ${user.email}
+			phone: ${event.target.phone.value}
+			address: ${event.target.address.value}
+		`);
+		
+		const doc = {
+			name: user.displayName,
+			email: user.email,
+			phone: event.target.phone.value,
+			address: event.target.address.value
+		}
+		fetch('http://localhost:5000/orders', {
+			method: 'POST',
+			headers:{
+				'content-type':'application/json'
+			},
+			body: JSON.stringify(doc)
+		})
+		.then(res => res.json())
+		.then(data => {
+			console.log(data);
+			if(data.acknowledged) {
+				toast.success('Successfully added to order');
+			}
+		})
+	}
+
 	return (
 		<div>
 			<NavBar></NavBar>
@@ -74,41 +107,41 @@ const PurchasePage = () => {
 					</div>
 					<div class="p-10 justify-self-center">
 						<h2 class="card-title font-bold text-2xl">Place Your Order</h2>
-						<form className='my-5'>
-						<input readOnly value={user?.displayName} type="text" placeholder="Name" class="w-60 md:w-96 lg:w-96 input input-bordered   bg-white mb-3 block" />
-						<input readOnly value={user?.email} type="text" placeholder="Email" class="w-60 md:w-96 lg:w-96 input input-bordered bg-white mb-3 block" />
-						<input type="number" placeholder="Phone Number" class="w-60 md:w-96 lg:w-96 input input-bordered  bg-white mb-3 block" required/>
-						<input type="text" placeholder="Order Shipped Address" class="w-60 md:w-96 lg:w-96 input input-bordered  bg-white mb-3 block" required/>
-						<div className='flex justify-center items-center my-5'>
-							<button onClick={()=> {
-								let finalQuantity = quantity+1;
-								if(finalQuantity > parseInt(data.available_quantity)){
-									finalQuantity--;
-								} else if(finalQuantity < parseInt(data.min_quantity)){
-								} else{
-									setBtnDisable(false);
-								}
-								setQuantity(finalQuantity);	
-							}} type='button' class="btn btn-rounded text-3xl text-white">
-								<RiAddFill></RiAddFill>
-							</button>
-							<input value={quantity ? quantity : `0`} onChange={handleChange} type="text" placeholder="Type here" class="w-32 input input-bordered bg-white mx-3 text-center" />
-							<button onClick={() => {
-								let finalQuantity = quantity-1;
-								if(finalQuantity < parseInt(data.min_quantity)){
-									finalQuantity++;
-								}
-								 else if(finalQuantity > parseInt(data.available_quantity)){
-								} else{
-									setBtnDisable(false);
-								}
-								setQuantity(finalQuantity);								
-							}} type='button' class="btn btn-rounded text-3xl text-white">
-								<IoMdRemove></IoMdRemove>
-							</button>
-						</div>
-						<input disabled={btnDisable} type="submit" value={btnDisable ? 'Check Limit of Purchase' : 'Purchase'}className={`${btnDisable? 'btn-accent' :'bg-gradient-to-r from-primary to-secondary border-none'} btn  w-full text-white `} />
-						</form>
+						<form onSubmit={handlePurchase} className='my-5'>
+							<input readOnly value={user?.displayName} type="text" placeholder="Name" class="w-60 md:w-96 lg:w-96 input input-bordered   bg-white mb-3 block" />
+							<input readOnly value={user?.email} type="text" placeholder="Email" class="w-60 md:w-96 lg:w-96 input input-bordered bg-white mb-3 block" />
+							<input name='phone' type="number" placeholder="Phone Number" class="w-60 md:w-96 lg:w-96 input input-bordered  bg-white mb-3 block" required/>
+							<input name='address' type="text" placeholder="Order Shipped Address" class="w-60 md:w-96 lg:w-96 input input-bordered  bg-white mb-3 block" required/>
+							<div className='flex justify-center items-center my-5'>
+								<button onClick={()=> {
+									let finalQuantity = quantity+1;
+									if(finalQuantity > parseInt(data.available_quantity)){
+										finalQuantity--;
+									} else if(finalQuantity < parseInt(data.min_quantity)){
+									} else{
+										setBtnDisable(false);
+									}
+									setQuantity(finalQuantity);	
+								}} type='button' class="btn btn-rounded text-3xl text-white">
+									<RiAddFill></RiAddFill>
+								</button>
+								<input value={quantity ? quantity : `0`} onChange={handleChange} type="text" placeholder="Type here" class="w-32 input input-bordered bg-white mx-3 text-center" />
+								<button onClick={() => {
+									let finalQuantity = quantity-1;
+									if(finalQuantity < parseInt(data.min_quantity)){
+										finalQuantity++;
+									}
+									else if(finalQuantity > parseInt(data.available_quantity)){
+									} else{
+										setBtnDisable(false);
+									}
+									setQuantity(finalQuantity);								
+								}} type='button' class="btn btn-rounded text-3xl text-white">
+									<IoMdRemove></IoMdRemove>
+								</button>
+							</div>
+							<input disabled={btnDisable} type="submit" value={btnDisable ? 'Check Limit of Purchase' : 'Purchase'}className={`${btnDisable? 'btn-accent' :'bg-gradient-to-r from-primary to-secondary border-none'} btn  w-full text-white `} />
+							</form>
 					</div>
 				</div>
 			</div>
