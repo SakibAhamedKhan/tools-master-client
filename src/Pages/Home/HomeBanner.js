@@ -10,7 +10,7 @@ const HomeBanner = () => {
 				<div class="max-w-md">
 					<h1 class="mb-5 text-5xl font-bold text-white">Tools Need?</h1>
 					<p class="mb-5 text-white">We provide the best quality tools all over the world</p>
-					<button class="btn btn-primary text-white">Get Started</button>
+					<button class="btn btn-primary text-white bg-gradient-to-r from-primary to-secondary">Get Started</button>
 				</div>
 			</div>
 		</div>

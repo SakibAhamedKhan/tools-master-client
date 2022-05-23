@@ -20,12 +20,13 @@ module.exports = {
     "base-100": "#F8F9FA",
             
     "info": "#ABBCED",
+
             
     "success": "#50DCC7",
             
     "warning": "#F5CD4D",
             
-    "error": "#EC225C",
+    "error": "#333333",
             },
           },
         ],
