@@ -14,7 +14,7 @@ const HomeTools = () => {
 	toolWithSkip = tools.slice(0,6);
 	return (
 		<div className='my-20 mx-auto px-10 max-w-screen-2xl'>
-			<h2 className='text-center text-5xl font-bold mb-4'>Our Tools: {toolWithSkip.length}</h2>
+			<h2 className='text-center text-5xl font-bold mb-4'>Our Tools</h2>
 			<p className='text-center text-xl text-slate-400 mb-20'>Chose your favourite tools</p>
 
 			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center'>

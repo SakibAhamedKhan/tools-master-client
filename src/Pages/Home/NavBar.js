@@ -5,7 +5,7 @@ const NavBar = () => {
 	const menuItems = <>
 		<li className='text-white font-semibold'><Link to='/'>Home</Link></li>
 		<li className='text-white font-semibold'><Link to='/blogs'>Blogs</Link></li>
-		<li className='text-white font-semibold'><Link to='/'>Login</Link></li>
+		<li className='text-white font-semibold'><Link to='/login'>Login</Link></li>
 	</>
 	return (
 		<div class="navbar bg-gradient-to-r from-accent to-neutral fixed z-10">
