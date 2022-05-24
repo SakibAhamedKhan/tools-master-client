@@ -15,7 +15,7 @@ const NavBar = () => {
 		{
 			user?
 			<>
-				<li className='text-white font-semibold'><Link to='/'>Dashboard</Link></li>
+				<li className='text-white font-semibold'><Link to='/dashboard'>Dashboard</Link></li>
 				<li className='text-white font-semibold'><p onClick={() => signOut(auth)}>Logout</p></li>
 			</>
 			:

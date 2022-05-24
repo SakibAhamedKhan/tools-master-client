@@ -62,19 +62,23 @@ const PurchasePage = () => {
 
 	const handlePurchase = (event) => {
 		event.preventDefault();
-		alert(`
-			quantity: ${quantity}
-			name: ${user.displayName}
-			email: ${user.email}
-			phone: ${event.target.phone.value}
-			address: ${event.target.address.value}
-		`);
+		// alert(`
+		// 	quantity: ${quantity}
+		// 	name: ${user.displayName}
+		// 	email: ${user.email}
+		// 	phone: ${event.target.phone.value}
+		// 	address: ${event.target.address.value}
+		// `);
 		
 		const doc = {
 			name: user.displayName,
 			email: user.email,
 			phone: event.target.phone.value,
-			address: event.target.address.value
+			address: event.target.address.value,
+			quantity: quantity,
+			tools_name: data.name,
+			tools_image: data.image,
+			tools_price: data.price
 		}
 		fetch('http://localhost:5000/orders', {
 			method: 'POST',
@@ -89,6 +93,7 @@ const PurchasePage = () => {
 			if(data.acknowledged) {
 				toast.success('Successfully added to order');
 			}
+			event.target.reset();
 		})
 	}
 
@@ -125,7 +130,7 @@ const PurchasePage = () => {
 								}} type='button' class="btn btn-rounded text-3xl text-white">
 									<RiAddFill></RiAddFill>
 								</button>
-								<input value={quantity ? quantity : `0`} onChange={handleChange} type="text" placeholder="Type here" class="w-32 input input-bordered bg-white mx-3 text-center" />
+								<input value={quantity ? quantity : `0`} onChange={handleChange} type="text" placeholder="Type here" class="w-20 md:w-32 lg:w-32 input input-bordered bg-white mx-3 text-center" />
 								<button onClick={() => {
 									let finalQuantity = quantity-1;
 									if(finalQuantity < parseInt(data.min_quantity)){
@@ -140,8 +145,9 @@ const PurchasePage = () => {
 									<IoMdRemove></IoMdRemove>
 								</button>
 							</div>
-							<input disabled={btnDisable} type="submit" value={btnDisable ? 'Check Limit of Purchase' : 'Purchase'}className={`${btnDisable? 'btn-accent' :'bg-gradient-to-r from-primary to-secondary border-none'} btn  w-full text-white `} />
+							<input disabled={btnDisable} type="submit" value={btnDisable ? 'Check Limit of Purchase' : 'Purchase'}className={`${btnDisable? 'btn-accent' :'bg-gradient-to-r from-primary to-secondary border-none'} btn w-full text-white `} />
 							</form>
+							<h2 className='text-center font-semibold'>Total Price: ${quantity * parseInt(data.price)}</h2>
 					</div>
 				</div>
 			</div>
