@@ -78,7 +78,8 @@ const PurchasePage = () => {
 			quantity: quantity,
 			tools_name: data.name,
 			tools_image: data.image,
-			tools_price: data.price
+			tools_price: data.price,
+			tools_id: data._id
 		}
 		fetch('http://localhost:5000/orders', {
 			method: 'POST',

@@ -7,7 +7,7 @@ import MyOrderRow from './MyOrderRow';
 
 const MyOrders = () => {
 	const [user, loading, error] = useAuthState(auth);
-	const {data:orders} = useQuery(['myorders', 'user'], () => {
+	const {data:orders} = useQuery(['myorders', user], () => {
 		return fetch(`http://localhost:5000/myorders/${user.email}`,{
 			method: 'GET'
 		})
@@ -19,6 +19,9 @@ const MyOrders = () => {
 	if(loading || !orders) {
 		return <Loading></Loading>;
 	}
+	let ordersInReverse = [];
+	ordersInReverse = [...orders];
+	ordersInReverse = ordersInReverse.reverse();
 
 	return (
 		<div>
@@ -34,12 +37,12 @@ const MyOrders = () => {
 						<th>Shipping Address</th> 
 						<th>Quantity | Price</th> 
 						<th>Pay Status</th> 
-						<th>Remove Order</th>
+						<th>Order Action</th>
 					</tr>
 					</thead> 
 					<tbody>
 						{
-							orders.map((order,index) => <MyOrderRow 
+							ordersInReverse.map((order,index) => <MyOrderRow 
 								key={order._id}
 								order={order}
 								index={index}
@@ -48,7 +51,7 @@ const MyOrders = () => {
 						
 					</tbody> 
 					<tfoot>
-					<tr>
+					{/* <tr>
 						<th></th> 
 						<th>Name</th> 
 						<th>Job</th> 
@@ -56,7 +59,7 @@ const MyOrders = () => {
 						<th>location</th> 
 						<th>Last Login</th> 
 						<th>Favorite Color</th>
-					</tr>
+					</tr> */}
 					</tfoot>
 				</table>
 			</div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MyOrderRow = ({order, index}) => {
 	return (
@@ -20,10 +21,18 @@ const MyOrderRow = ({order, index}) => {
 			</td>
 			<td>({order.quantity}) | (${parseInt(order.quantity) * parseInt(order.tools_price)})</td> 
 			<td>
-				<button className='btn btn-success btn-xs px-3 text-white'>Pay Now</button>
+				{(order.paid)?<button disabled className='btn btn-success btn-xs px-3 text-white'>Paid</button> :
+					<Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-success btn-xs px-3 text-white'>Pay Now</button></Link>
+				}
 			</td> 
 			<td>
-				<button className='btn btn-neutral btn-xs px-3 text-white'>Cancel</button>
+				{
+					(order.paid) ?
+					<button className='btn btn-primary btn-xs px-3 text-white'>Processing</button>
+					
+					:
+					<button className='btn btn-neutral btn-xs px-3 text-white'>Cancel</button>
+				}
 			</td>
 		</tr>
 	);
