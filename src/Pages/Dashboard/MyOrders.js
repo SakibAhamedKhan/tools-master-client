@@ -7,7 +7,7 @@ import MyOrderRow from './MyOrderRow';
 
 const MyOrders = () => {
 	const [user, loading, error] = useAuthState(auth);
-	const {data:orders} = useQuery(['myorders', user], () => {
+	const {data:orders,isLoading,  refetch} = useQuery(['myorders', user], () => {
 		return fetch(`http://localhost:5000/myorders/${user.email}`,{
 			method: 'GET'
 		})
@@ -46,6 +46,7 @@ const MyOrders = () => {
 								key={order._id}
 								order={order}
 								index={index}
+								refetch={refetch}
 							></MyOrderRow>)
 						}	
 						

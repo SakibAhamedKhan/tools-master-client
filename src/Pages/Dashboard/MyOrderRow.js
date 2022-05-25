@@ -1,7 +1,59 @@
-import React from 'react';
+import React, { createFactory } from 'react';
+import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-const MyOrderRow = ({order, index}) => {
+const MyOrderRow = ({order, index, refetch}) => {
+	
+	const HandleOrderCancel = () => {
+		// const {data} = useQuery('ancelOrder', () => {
+		// 	return fetch(`http://localhost:5000/myorders/${order._id}`,{
+		// 		method: 'DELETE',
+		// 		headers:{
+		// 			'content-type':'application/json'
+		// 		}
+		// 	})
+		// 	.then(res => {
+		// 		console.log(res);
+		// 		res.json();
+		// 	});
+		// })
+		Swal.fire({
+			title: 'Are you sure?',
+			text: `Cancel the order: ${order.tools_name}`,
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Proceed'
+		  }).then((result) => {
+			if (result.isConfirmed) {
+				fetch(`http://localhost:5000/myorders/${order._id}`,{
+					method: 'DELETE',
+					headers:{
+						'content-type':'application/json'
+					}
+				})
+				.then(res => {
+					console.log(res);
+					return res.json();
+				})
+				.then(data => {
+					if(data?.acknowledged){
+						refetch();
+					}
+				})
+			
+			  Swal.fire(
+				'Deleted!',
+				`Your Order ${order.tools_name} is canceled`,
+				'success'
+			  )
+			}
+		  })
+		
+	}
+
 	return (
 		<tr>
 			<th>{index+1}</th>
@@ -31,7 +83,7 @@ const MyOrderRow = ({order, index}) => {
 					<button className='btn btn-primary btn-xs px-3 text-white'>Processing</button>
 					
 					:
-					<button className='btn btn-neutral btn-xs px-3 text-white'>Cancel</button>
+					<button onClick={HandleOrderCancel} className='btn btn-neutral btn-xs px-3 text-white'>Cancel</button>
 				}
 			</td>
 		</tr>
