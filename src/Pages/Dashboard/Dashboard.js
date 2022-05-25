@@ -4,10 +4,17 @@ import { Link, Outlet } from 'react-router-dom';
 import auth from '../../firebase.init';
 import NavBar from '../Home/NavBar';
 import {BsLayoutSidebarInset} from 'react-icons/bs';
+import useAdmin from '../../Hooks/useAdmin';
+import LoadingWIthoutFullH from '../Shared/LoadingWIthoutFullH';
 
 const Dashboard = () => {
 	const [user] = useAuthState(auth);
 	const [checked, setChecked] = useState(false);
+	const [admin, adminLoading] = useAdmin(user);
+
+	if(adminLoading) {
+		return <LoadingWIthoutFullH></LoadingWIthoutFullH>;
+	}
 
 
 	return (
@@ -32,9 +39,21 @@ const Dashboard = () => {
 				<div class="drawer-side">
 					<label for="my-drawer-2" class="drawer-overlay"></label> 
 					<ul class="menu p-4 overflow-y-auto w-80 bg-accent text-white">
-					<li><Link to ='/dashboard'>My Profile</Link></li>
-					<li><Link to ='/dashboard/myorders'>My Orders</Link></li>
-					<li><Link to ='/dashboard/review'>Add A Review</Link></li>
+						<li><Link to ='/dashboard'>My Profile</Link></li>
+						{
+							!admin && <>
+								<li><Link to ='/dashboard/myorders'>My Orders</Link></li>
+								<li><Link to ='/dashboard/review'>Add A Review</Link></li>
+							</>
+						}
+						{
+							admin && <>
+								<li><Link to ='/dashboard/manageAllOrders'>Manage All Orders</Link></li>
+								<li><Link to ='/dashboard/addTool'>Add A Tool</Link></li>
+								<li><Link to ='/dashboard/makeAdmin'>Make Admin</Link></li>
+								<li><Link to ='/dashboard/manageTools'>Manage Tools</Link></li>
+							</>
+						}
 					</ul>
 				
 				</div>

@@ -40,7 +40,7 @@ const MyOrders = () => {
 						<th className='whitespace-nowrap'>Order Action</th>
 					</tr>
 					</thead> 
-					<tbody>
+					<tbody className='bg-white'>
 						{
 							ordersInReverse.map((order,index) => <MyOrderRow 
 								key={order._id}

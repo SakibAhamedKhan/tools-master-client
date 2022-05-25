@@ -19,8 +19,8 @@ const HomeBanner = () => {
 					{
 						user?
 						<button onClick={() => {
-							// navigate('/signup');
-						}} class="btn btn-primary text-white bg-gradient-to-r from-primary to-secondary">Explore All Tools</button>
+							navigate('/dashboard/myorders');
+						}} class="btn btn-primary text-white bg-gradient-to-r from-primary to-secondary">Explore All Order</button>
 						:
 						<button onClick={() => {
 							navigate('/signup');

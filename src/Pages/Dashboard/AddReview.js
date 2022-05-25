@@ -49,7 +49,7 @@ const AddReview = () => {
 
 			<div class="hero">
 				<div class="hero-content flex-col lg:flex-row-reverse">
-					<div class="card flex-shrink-0 w-72 md:w-96 lg:w-96 shadow-2xl bg-base-100">
+					<div class="card flex-shrink-0 w-72 md:w-96 lg:w-96 shadow-2xl bg-white">
 					<div class="card-body">
 						<h1 className='text-xl font-bold'>Rate this site</h1>
 						<p className='text-sm'>Tell others what you thik</p>

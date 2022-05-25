@@ -13,7 +13,11 @@ const MyProfile = () => {
 
 	
 	const {data:userData, isLoading, refetch} = useQuery('userProfile', () => {
-		return fetch(`http://localhost:5000/profile/${user.email}`)
+		return fetch(`http://localhost:5000/profile/${user.email}`,{
+			headers:{
+				authorization: `Bearer ${localStorage.getItem('access-token')}`
+			}
+		})
 		.then(res => res.json());
 	})
 	// useEffect( ()=>{
@@ -67,7 +71,8 @@ const MyProfile = () => {
 				fetch(`http://localhost:5000/profile/${user.email}`,{
 					method: 'PUT',
 					headers:{
-						'content-type': 'application/json'
+						'content-type': 'application/json',
+						
 					},
 					body: JSON.stringify(doc)
 				})
@@ -109,7 +114,7 @@ const MyProfile = () => {
 					<p className='mb-2 text-xl overflow-x-auto'>Education: {userData?.education} </p>
 					<p className='mb-2 text-xl overflow-x-auto'>Location: {userData?.location} </p>
 					<p className='mb-2 text-xl overflow-x-auto'>Phone Number: {userData?.phone}</p>
-					<p className='mb-2 text-xl overflow-x-auto'>Linkedin: {userData?.linkedin}</p>
+					<p className='mb-2 text-xl overflow-x-auto'>Linkedin: <span className='text-blue-500 underline'><a href={userData?.linkedin} target='_blank'>{userData?.linkedin}</a></span></p>
 					<button onClick={() => setShow(true)} className='btn btn-accent text-white w-fit'>Update Profile</button>
 				</div>
 			</div>

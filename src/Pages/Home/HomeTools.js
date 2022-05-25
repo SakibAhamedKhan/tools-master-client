@@ -19,11 +19,13 @@ const HomeTools = () => {
 		return <Loading></Loading>;
 	}
 
-	toolWithSkip = tools.slice(0,6);
 
-
+	let toolWthReverse = [...tools];
+	toolWthReverse = toolWthReverse.reverse();
 
 	
+	toolWithSkip = toolWthReverse.slice(0,6);
+
 	return (
 		<>
 			{
