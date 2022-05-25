@@ -46,7 +46,6 @@ const MyProfile = () => {
 		const phone = event.target.phone.value;
 		const linkedin = event.target.linkedin.value;
 		// const photo = event.target.files;
-		console.log(photo);
 
 		const formData = new FormData();
 		formData.append('image', photo);
