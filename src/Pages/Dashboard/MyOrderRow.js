@@ -55,7 +55,7 @@ const MyOrderRow = ({order, index, refetch}) => {
 	}
 
 	return (
-		<tr>
+		<tr className='border border-2'>
 			<th>{index+1}</th>
 			<td>
 				{/* <img className='w-' src={order.tools_image} alt="" /> */}
@@ -74,13 +74,13 @@ const MyOrderRow = ({order, index, refetch}) => {
 			<td>({order.quantity}) | (${parseInt(order.quantity) * parseInt(order.tools_price)})</td> 
 			<td>
 				{(order.paid)?<button disabled className='btn btn-success btn-xs px-3 text-white'>Paid</button> :
-					<Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-success btn-xs px-3 text-white'>Pay Now</button></Link>
+					<Link to={`/dashboard/payment/${order._id}`}><button className='whitespace-nowrap btn btn-success btn-xs px-3 text-white py-1'>Pay Now</button></Link>
 				}
 			</td> 
 			<td>
 				{
 					(order.paid) ?
-					<button className='btn btn-primary btn-xs px-3 text-white'>Processing</button>
+					<button className='btn btn-primary btn-xs px-3 py-1 text-white'>Processing</button>
 					
 					:
 					<button onClick={HandleOrderCancel} className='btn btn-neutral btn-xs px-3 text-white'>Cancel</button>

@@ -35,8 +35,8 @@ const AddReview = () => {
 		.then(data => {
 			if(data?.acknowledged){
 				Swal.fire(
-					'Thanks for review us!',
-					'😍',
+					'Thanks for review us! 😍',
+					'',
 					'success'
 				  )
 			}

@@ -28,16 +28,16 @@ const MyOrders = () => {
 			<h2 className='text-center text-accent text-xl my-2 font-semibold'>My Orders</h2>
 			<div class="overflow-x-auto mx-4">
 
-				<table class="table table-compact w-full ">
-					<thead>
+				<table class="table-compact w-full ">
+					<thead className='bg-accent text-white'>
 					<tr>
 						<th></th>
-						<th>Tools Image</th> 
-						<th>Tools Name</th> 
-						<th>Shipping Address</th> 
-						<th>Quantity | Price</th> 
-						<th>Pay Status</th> 
-						<th>Order Action</th>
+						<th className='whitespace-nowrap'>Tools Image</th> 
+						<th className='whitespace-nowrap'>Tools Name</th> 
+						<th className='whitespace-nowrap'>Shipping Address</th> 
+						<th className='whitespace-nowrap'>Quantity | Price</th> 
+						<th className='whitespace-nowrap' >Pay Status</th> 
+						<th className='whitespace-nowrap'>Order Action</th>
 					</tr>
 					</thead> 
 					<tbody>
