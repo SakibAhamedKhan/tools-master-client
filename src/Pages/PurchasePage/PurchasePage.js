@@ -9,6 +9,8 @@ import {RiAddFill} from 'react-icons/ri';
 import {IoMdRemove} from 'react-icons/io'
 import Footer from '../Shared/Footer';
 import { toast } from 'react-toastify';
+import useAdmin from '../../Hooks/useAdmin';
+import Swal from 'sweetalert2';
 
 const PurchasePage = () => {
 	const {tool_Id} = useParams();
@@ -17,6 +19,7 @@ const PurchasePage = () => {
 	const [quantity, setQuantity] = useState(0);
 	const [fetcing,setFetcing] = useState(true);
 	const [btnDisable , setBtnDisable] = useState(false);
+	const [admin,adminLoading] = useAdmin(user);
 
 
 	// const {data, isLoading} = useQuery('toolOne', () => {
@@ -35,7 +38,7 @@ const PurchasePage = () => {
 		})
 	},[])
 
-	if(loading || fetcing) {
+	if(loading || fetcing || adminLoading) {
 		return <Loading></Loading>;
 	}
 
@@ -69,33 +72,42 @@ const PurchasePage = () => {
 		// 	phone: ${event.target.phone.value}
 		// 	address: ${event.target.address.value}
 		// `);
-		
-		const doc = {
-			name: user.displayName,
-			email: user.email,
-			phone: event.target.phone.value,
-			address: event.target.address.value,
-			quantity: quantity,
-			tools_name: data.name,
-			tools_image: data.image,
-			tools_price: data.price,
-			tools_id: data._id
-		}
-		fetch('http://localhost:5000/orders', {
-			method: 'POST',
-			headers:{
-				'content-type':'application/json'
-			},
-			body: JSON.stringify(doc)
-		})
-		.then(res => res.json())
-		.then(data => {
-			console.log(data);
-			if(data.acknowledged) {
-				toast.success('Successfully added to order');
+		if(!admin){
+			const doc = {
+				name: user.displayName,
+				email: user.email,
+				phone: event.target.phone.value,
+				address: event.target.address.value,
+				quantity: quantity,
+				tools_name: data.name,
+				tools_image: data.image,
+				tools_price: data.price,
+				tools_id: data._id
 			}
-			event.target.reset();
-		})
+			fetch('http://localhost:5000/orders', {
+				method: 'POST',
+				headers:{
+					'content-type':'application/json'
+				},
+				body: JSON.stringify(doc)
+			})
+			.then(res => res.json())
+			.then(data => {
+				console.log(data);
+				if(data.acknowledged) {
+					toast.success('Successfully added to order');
+				}
+				event.target.reset();
+			})
+		} else{
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'You can not make Order because you are Admin!',
+				footer: ''
+			  })
+		}
+		
 	}
 
 	return (

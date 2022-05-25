@@ -8,11 +8,11 @@ import useAdmin from '../../Hooks/useAdmin';
 import LoadingWIthoutFullH from '../Shared/LoadingWIthoutFullH';
 
 const Dashboard = () => {
-	const [user] = useAuthState(auth);
+	const [user, loading] = useAuthState(auth);
 	const [checked, setChecked] = useState(false);
 	const [admin, adminLoading] = useAdmin(user);
 
-	if(adminLoading) {
+	if(adminLoading || loading) {
 		return <LoadingWIthoutFullH></LoadingWIthoutFullH>;
 	}
 
