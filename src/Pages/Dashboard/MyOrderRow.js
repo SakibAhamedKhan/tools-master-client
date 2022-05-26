@@ -80,7 +80,10 @@ const MyOrderRow = ({order, index, refetch}) => {
 			<td>
 				{
 					(order.paid) ?
-					<button className='btn btn-primary btn-xs px-3 py-1 text-white'>Processing</button>
+					<div>
+						<button className='btn btn-primary btn-xs px-3 py-1 text-white'>Processing</button>
+						<p className='whitespace-nowrap text-green-500 pt-2'>TrxID: {order.transactionId}</p>
+					</div>
 					
 					:
 					<button onClick={HandleOrderCancel} className='btn btn-neutral btn-xs px-3 text-white'>Cancel</button>

@@ -31,13 +31,16 @@ const CheckoutForm = ({price, toolsPayment}) => {
 
 	const handleSubmit = async(event) => {
 		event.preventDefault();
+		setDisableBtn(true);
 		
 		if(!stripe || !elements){
+			setDisableBtn(false);
 			return;
 		}
 		const card = elements.getElement(CardElement);
 
 		if (card == null) {
+			setDisableBtn(false);
 			return;
 		}
 
@@ -47,8 +50,10 @@ const CheckoutForm = ({price, toolsPayment}) => {
 		})
 
 		if(error){
+			setDisableBtn(false);
 			setCError(error?.message);
 		} else{
+			setDisableBtn(false);
 			setCError('');
 		}
 
@@ -91,15 +96,15 @@ const CheckoutForm = ({price, toolsPayment}) => {
 			.then(res => res.json())
 			.then(data => {
 				setLoad(false);
-				setDisableBtn(false);
+				// setDisableBtn(false);
 			})
 			setLoad(false);
-			setDisableBtn(false);
+			// setDisableBtn(false);
 		}
 	}
-	if(load){
-		return <LoadingWIthoutFullH></LoadingWIthoutFullH>;
-	}
+	// if(load){
+	// 	return <LoadingWIthoutFullH></LoadingWIthoutFullH>;
+	// }
 
 	return (
 		<div >

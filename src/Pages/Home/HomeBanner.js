@@ -4,9 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import banner1 from '../../Assets/images/banner1.jpg';
 import banner2 from '../../Assets/images/banner2.jpg';
 import auth from '../../firebase.init';
+import useAdmin from '../../Hooks/useAdmin';
 
 const HomeBanner = () => {
 	const [user, loading, error] = useAuthState(auth);
+	const [admin] = useAdmin(user);
 
 	const navigate = useNavigate();
 	return (
@@ -18,9 +20,14 @@ const HomeBanner = () => {
 					<p class="mb-5 text-white">We provide the best quality tools all over the world</p>
 					{
 						user?
-						<button onClick={() => {
-							navigate('/dashboard/myorders');
-						}} class="btn btn-primary text-white bg-gradient-to-r from-primary to-secondary">Explore All Order</button>
+						<>
+							{admin && <button onClick={() => {
+								navigate('/dashboard/addTool');
+							}} class="btn btn-primary text-white bg-gradient-to-r from-primary to-secondary">Add an new Tool</button> }
+							{ !admin &&  <button onClick={() => {
+								navigate('/dashboard/myorders');
+							}} class="btn btn-primary text-white bg-gradient-to-r from-primary to-secondary">Explore All Order</button>}
+						</>
 						:
 						<button onClick={() => {
 							navigate('/signup');

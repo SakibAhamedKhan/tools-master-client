@@ -12,6 +12,7 @@ const NavBar = () => {
 	const menuItems = <>
 		<li className='text-white font-semibold'><Link to='/'>Home</Link></li>
 		<li className='text-white font-semibold'><Link to='/blogs'>Blogs</Link></li>
+		<li className='text-white font-semibold'><Link to='/myPortfilo'>My Portfilo</Link></li>
 		{
 			user?
 			<>

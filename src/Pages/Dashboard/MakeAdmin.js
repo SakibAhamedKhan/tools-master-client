@@ -1,3 +1,4 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
@@ -15,7 +16,14 @@ const MakeAdmin = () => {
 				authorization: `Bearer ${localStorage.getItem('access-token')}`
 			}
 		})
-		.then(res => res.json());
+		.then(res => {
+			console.log(res)
+			if(res.status === 403){
+				signOut(auth);
+			} else{
+				return res.json();
+			}
+		});
 	})
 
 	if(loading || isLoading){

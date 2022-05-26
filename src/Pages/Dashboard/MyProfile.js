@@ -110,10 +110,10 @@ const MyProfile = () => {
 					</div>
 					<p className='mb-2 text-xl overflow-x-auto'>Name: {user?.displayName}</p>
 					<p className='mb-2 text-xl overflow-x-auto'>Email: {user?.email}</p>
-					<p className='mb-2 text-xl overflow-x-auto'>Education: {userData?.education} </p>
-					<p className='mb-2 text-xl overflow-x-auto'>Location: {userData?.location} </p>
-					<p className='mb-2 text-xl overflow-x-auto'>Phone Number: {userData?.phone}</p>
-					<p className='mb-2 text-xl overflow-x-auto'>Linkedin: <span className='text-blue-500 underline'><a href={userData?.linkedin} target='_blank'>{userData?.linkedin}</a></span></p>
+					<p className='mb-2 text-xl overflow-x-auto'>Education: {userData?.education? userData.education: 'Please Click Update for Add your Education'} </p>
+					<p className='mb-2 text-xl overflow-x-auto'>Location: {userData?.location ? userData.location: 'Please Click Update for Add your Location'} </p>
+					<p className='mb-2 text-xl overflow-x-auto'>Phone Number: {userData?.phone ? userData.phone : 'Please Click Update for Add your Phone'}</p>
+					<p className='mb-2 text-xl overflow-x-auto'>Linkedin: <span className={userData.linkedin? 'text-blue-500 underline':''}><a href={userData?.linkedin} target='_blank'>{userData?.linkedin ? userData.linkedin : 'Please Click Update for Add your Linkedin Profile'}</a></span></p>
 					<button onClick={() => setShow(true)} className='btn btn-accent text-white w-fit'>Update Profile</button>
 				</div>
 			</div>

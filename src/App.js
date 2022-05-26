@@ -19,6 +19,7 @@ import MakeAdmin from './Pages/Dashboard/MakeAdmin';
 import ManageAllOrders from './Pages/Dashboard/ManageAllOrders';
 import ManageTools from './Pages/Dashboard/ManageTools';
 import RequireUser from './Pages/Login/RequireUser';
+import MyPortfilo from './Pages/MyPortfilo/MyPortfilo';
 
 function App() {
   return (
@@ -86,7 +87,7 @@ function App() {
           </Route>
 
 
-
+        <Route path='myPortfilo' element={<MyPortfilo></MyPortfilo>}></Route>
 
 
 
