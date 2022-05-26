@@ -4,18 +4,31 @@ import Swal from 'sweetalert2';
 const ManageAllOrderRow = ({order, index, refetch}) => {
 
 	const handleShipping = () => {
-		fetch(`http://localhost:5000/manageOrder/${order._id}`, {
-			method: 'PUT',
-			headers: {
-				'content-type': 'application/json',
-				authorization: `Bearer ${localStorage.getItem('access-token')}`
+		
+		Swal.fire({
+			title: 'Are you sure?',
+			text: `Shipping the order: ${order.tools_name} of ${order.email}`,
+			icon: 'question',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Proceed'
+		  }).then((result) => {
+			if (result.isConfirmed) {
+				fetch(`http://localhost:5000/manageOrder/${order._id}`, {
+				method: 'PUT',
+				headers: {
+					'content-type': 'application/json',
+					authorization: `Bearer ${localStorage.getItem('access-token')}`
+				}
+				})
+				.then(res => res.json())
+				.then(data => {
+					console.log(data);
+					refetch();
+				})
 			}
-		})
-		.then(res => res.json())
-		.then(data => {
-			console.log(data);
-			refetch();
-		})
+		  })
 	}
 	
 	const handleOrderDelete = () => {

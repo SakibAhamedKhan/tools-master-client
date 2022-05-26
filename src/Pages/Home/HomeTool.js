@@ -11,7 +11,7 @@ const HomeTool = ({tool}) => {
 	return (
 		
 		<div class="card w-fit bg-white shadow-xl border-2 border-white border-dashed hover:border-primary rounded-md">
-			<figure className='h-48'><img className='mt-10' src={image} alt="Shoes" /></figure>
+			<figure className='h-48 mt-14 mb-6'><img className='' src={image} alt="Shoes" /></figure>
 			<div class="card-body">
 					<h2 class="card-title">{name}</h2>
 					<p className='text-justify mb-2'>{description.length > 100 ? description.slice(0,100)+'...' : description}</p>
