@@ -7,7 +7,7 @@ const HomeTools = () => {
 	const [loading, setLoading] = useState(true);
 	let toolWithSkip;
 	useEffect( () =>{
-		fetch('http://localhost:5000/tools')
+		fetch('https://secure-eyrie-54243.herokuapp.com/tools')
 		.then(res => res.json())
 		.then(data => {
 			setTools(data);

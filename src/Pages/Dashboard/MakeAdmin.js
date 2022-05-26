@@ -11,7 +11,7 @@ const MakeAdmin = () => {
 	const [admin, adminLoading] = useAdmin(user);
 
 	const {data: users, isLoading, refetch} = useQuery('user', () => {
-		return fetch(`http://localhost:5000/user`,{
+		return fetch(`https://secure-eyrie-54243.herokuapp.com/user`,{
 			headers:{
 				authorization: `Bearer ${localStorage.getItem('access-token')}`
 			}
@@ -33,7 +33,7 @@ const MakeAdmin = () => {
 
 	const handleMakeAdmin = (user) => {
 
-		fetch(`http://localhost:5000/makeAdmin/${user.email}`,{
+		fetch(`https://secure-eyrie-54243.herokuapp.com/makeAdmin/${user.email}`,{
 			method: 'PUT',
 			headers:{
 				'content-type':'application/json',

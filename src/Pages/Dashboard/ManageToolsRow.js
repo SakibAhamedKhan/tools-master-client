@@ -14,7 +14,7 @@ const ManageToolsRow = ({tool, index, refetch}) => {
 			confirmButtonText: 'Proceed'
 		  }).then((result) => {
 			if (result.isConfirmed) {
-				fetch(`http://localhost:5000/tools/${tool._id}`, {
+				fetch(`https://secure-eyrie-54243.herokuapp.com/tools/${tool._id}`, {
 					method: 'DELETE',
 					headers: {
 				'content-type': 'application/json',

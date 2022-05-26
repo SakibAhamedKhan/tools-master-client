@@ -6,7 +6,7 @@ import ManageAllOrderRow from './ManageAllOrderRow';
 const ManageAllOrders = () => {
 
 	const {data:manageOrders, isLoading, refetch} = useQuery('manageOrder', () => {
-		return fetch('http://localhost:5000/manageOrder', {
+		return fetch('https://secure-eyrie-54243.herokuapp.com/manageOrder', {
 			headers:{
 				authorization: `Bearer ${localStorage.getItem('access-token')}`
 			}

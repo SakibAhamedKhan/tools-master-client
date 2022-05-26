@@ -47,7 +47,7 @@ const AddTools = () => {
 					available_quantity: availableQuantity,
 					price: price
 				}
-				fetch(`http://localhost:5000/addTool`,{
+				fetch(`https://secure-eyrie-54243.herokuapp.com/addTool`,{
 					method: 'POST',
 					headers:{
 						'content-type': 'application/json',

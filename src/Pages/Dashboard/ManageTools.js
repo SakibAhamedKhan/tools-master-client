@@ -6,7 +6,7 @@ import ManageToolsRow from './ManageToolsRow';
 const ManageTools = () => {
 
 	const {data:tools, isLoading, refetch} = useQuery('manageOrder', () => {
-		return fetch('http://localhost:5000/tools')
+		return fetch('https://secure-eyrie-54243.herokuapp.com/tools')
 		.then(res => res.json());
 	})
 

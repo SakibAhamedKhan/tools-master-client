@@ -13,7 +13,7 @@ const CheckoutForm = ({price, toolsPayment}) => {
 	const [disableBtn, setDisableBtn] = useState(false);
 
 	useEffect( () => {
-		fetch('http://localhost:5000/create-payment-intent',{
+		fetch('https://secure-eyrie-54243.herokuapp.com/create-payment-intent',{
 			method:'POST',
 			headers: {
 				'content-type':'application/json'
@@ -86,7 +86,7 @@ const CheckoutForm = ({price, toolsPayment}) => {
 				transactionId: paymentIntent.id
 			}
 			console.log(paymentDoc);
-			fetch(`http://localhost:5000/paymentOrders/${toolsPayment._id}`,{
+			fetch(`https://secure-eyrie-54243.herokuapp.com/paymentOrders/${toolsPayment._id}`,{
 				method: 'PATCH',
 				headers:{
 					'content-type':'application/json'

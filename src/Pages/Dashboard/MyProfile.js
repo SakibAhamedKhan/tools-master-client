@@ -13,7 +13,7 @@ const MyProfile = () => {
 
 	
 	const {data:userData, isLoading, refetch} = useQuery('userProfile', () => {
-		return fetch(`http://localhost:5000/profile/${user.email}`,{
+		return fetch(`https://secure-eyrie-54243.herokuapp.com/profile/${user.email}`,{
 			headers:{
 				authorization: `Bearer ${localStorage.getItem('access-token')}`
 			}
@@ -21,7 +21,7 @@ const MyProfile = () => {
 		.then(res => res.json());
 	})
 	// useEffect( ()=>{
-	// 	fetch(`http://localhost:5000/profile/${user.email}`)
+	// 	fetch(`https://secure-eyrie-54243.herokuapp.com/profile/${user.email}`)
 	// 	.then(res => res.json())
 	// 	.then(data => setUserData(data));
 	// } ,[]);
@@ -67,7 +67,7 @@ const MyProfile = () => {
 					photo: img,
 					linkedin: linkedin
 				}
-				fetch(`http://localhost:5000/profile/${user.email}`,{
+				fetch(`https://secure-eyrie-54243.herokuapp.com/profile/${user.email}`,{
 					method: 'PUT',
 					headers:{
 						'content-type': 'application/json',

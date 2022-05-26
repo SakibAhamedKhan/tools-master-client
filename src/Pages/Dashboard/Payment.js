@@ -16,7 +16,7 @@ const Payment = () => {
 
 
 	const {data: toolsPayment, isLoading, } = useQuery(['orderPayment',payment_id], () => {
-		return  fetch(`http://localhost:5000/orders/${payment_id}`, {
+		return  fetch(`https://secure-eyrie-54243.herokuapp.com/orders/${payment_id}`, {
 			method: 'GET'
 		})
 		.then(res => {

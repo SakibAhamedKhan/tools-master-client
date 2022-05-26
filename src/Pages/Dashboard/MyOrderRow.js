@@ -7,7 +7,7 @@ const MyOrderRow = ({order, index, refetch}) => {
 	
 	const HandleOrderCancel = () => {
 		// const {data} = useQuery('ancelOrder', () => {
-		// 	return fetch(`http://localhost:5000/myorders/${order._id}`,{
+		// 	return fetch(`https://secure-eyrie-54243.herokuapp.com/myorders/${order._id}`,{
 		// 		method: 'DELETE',
 		// 		headers:{
 		// 			'content-type':'application/json'
@@ -28,7 +28,7 @@ const MyOrderRow = ({order, index, refetch}) => {
 			confirmButtonText: 'Proceed'
 		  }).then((result) => {
 			if (result.isConfirmed) {
-				fetch(`http://localhost:5000/myorders/${order._id}`,{
+				fetch(`https://secure-eyrie-54243.herokuapp.com/myorders/${order._id}`,{
 					method: 'DELETE',
 					headers:{
 						'content-type':'application/json'

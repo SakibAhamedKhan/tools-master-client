@@ -24,7 +24,7 @@ const AddReview = () => {
 			star: star
 		}
 
-		fetch('http://localhost:5000/addreview',{
+		fetch('https://secure-eyrie-54243.herokuapp.com/addreview',{
 			method:'POST',
 			headers:{
 				'content-type':'application/json'
