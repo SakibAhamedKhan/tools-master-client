@@ -38,7 +38,7 @@ const Dashboard = () => {
 
 				<div class="drawer-side">
 					<label for="my-drawer-2" class="drawer-overlay"></label> 
-					<ul class="menu p-4 overflow-y-auto w-80 bg-accent text-white">
+					<ul class="menu p-4 overflow-y-auto w-52 bg-accent text-white">
 						<li><Link to ='/dashboard'>My Profile</Link></li>
 						{
 							!admin && <>
