@@ -110,7 +110,7 @@ const MyPortfilo = () => {
 						</ul>
 					</div>
 				</p>
-
+				<a href='https://drive.google.com/file/d/12yeC6I8S1mNrijyCmIvQ09OPJsChOuLd/view?usp=sharing' className='btn btn-accent w-fit text-white' target='_blank'>Download My CV</a>
 			</div>
 			</div>
 		</div>

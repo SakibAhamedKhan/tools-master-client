@@ -20,6 +20,7 @@ import ManageAllOrders from './Pages/Dashboard/ManageAllOrders';
 import ManageTools from './Pages/Dashboard/ManageTools';
 import RequireUser from './Pages/Login/RequireUser';
 import MyPortfilo from './Pages/MyPortfilo/MyPortfilo';
+import NotFoundPage from './Pages/Shared/NotFoundPage';
 
 function App() {
   return (
@@ -90,7 +91,7 @@ function App() {
         <Route path='myPortfilo' element={<MyPortfilo></MyPortfilo>}></Route>
 
 
-
+        <Route path='*' element={<NotFoundPage></NotFoundPage>}></Route>
         </Routes>
         {/* <h2 className='text-3xl'>Hellow World</h2>
         <button className='btn btn-primary text-white bg-gradient-to-r from-primary to-secondary'>Button</button> */}
