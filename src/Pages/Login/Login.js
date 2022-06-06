@@ -34,13 +34,15 @@ const Login = () => {
 		</div>
 	}
 	
+	if(token) {
+		return navigate('/');
+	}
+	
 	if(loading || sending){
 		return <Loading></Loading>;
 	}
 
-	if(token) {
-		return navigate('/');
-	}
+	
 
 	const handleResetPassword =  async (event) => {
 		console.log(event);
@@ -57,11 +59,22 @@ const Login = () => {
 		await signInWithEmailAndPassword(data.email, data.password);
 	}
 
+	const handleAdminDemoLogin = async() => {
+		await signInWithEmailAndPassword('sakibkhancrs2@gmail.com', '123456')
+	}
+	const handleUserDemoLogin = async() => {
+		await signInWithEmailAndPassword('sakibkhancrs1@gmail.com', '123456')
+	}
 	return (
 		<div className='flex justify-center flex-col items-center my-20'>
 			<h2 onClick={()=> navigate('/')} className='text-3xl font-black mb-8 cursor-pointer'>Tools Master</h2>
+			
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div class="card flex-shrink-0 w-full md:w-screen lg:w-screen max-w-sm shadow-lg bg-white px-4">
+					<div className='flex justify-center mt-3'>
+						<button onClick={() => handleAdminDemoLogin()} type='button' className='btn btn-success text text-dark  mr-3 w-36'>Admin Demo Account</button>
+						<button onClick={() => handleUserDemoLogin()} type='button' className='btn btn-info text text-dark   w-36'>User Demo Account</button>
+					</div>
 					<div class="card-body">
 						<h2 className='text-xl font-bold'>Sign in to your account</h2>
 						<div class="form-control">
@@ -133,8 +146,7 @@ const Login = () => {
 							<button type='submit' class="btn btn-accent text-white">Login</button>
 						</div>
 						<p className='label-text-alt ml-1 text-center'>Don't have an account? <Link to='/signup' className='text-blue-800 underline'>Sign up</Link></p>
-
-
+						
 						
 
 						<div class="divider">OR</div>

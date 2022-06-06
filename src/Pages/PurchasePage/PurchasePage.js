@@ -113,7 +113,8 @@ const PurchasePage = () => {
 	return (
 		<div>
 			<NavBar></NavBar>
-			<div className='pt-28 pb-16 px-4 md:px-10 lg:px-16'>
+			<h2 className='pt-24 pb-6 text-center text-3xl font-bold text-accent'>Purchase Page</h2>
+			<div className='pb-16 px-4 md:px-10 lg:px-16'>
 				<div class="grid grid-cols-1 lg:grid-cols-2 bg-white shadow-xl justify-center items-center">
 					<div class='mx-auto p-5 md:p-10 lg:p-14'>
 					<figure className='h-48'><img className='mt-10' src={data.image} alt="Shoes" /></figure>
@@ -158,9 +159,11 @@ const PurchasePage = () => {
 									<IoMdRemove></IoMdRemove>
 								</button>
 							</div>
+							<h2 className='text-center font-semibold mb-3'>Total Price: ${quantity * parseInt(data.price)}</h2>
+
 							<input disabled={btnDisable} type="submit" value={btnDisable ? 'Check Limit of Purchase' : 'Purchase'}className={`${btnDisable? 'btn-accent' :'bg-gradient-to-r from-primary to-secondary border-none'} btn w-full text-white `} />
 							</form>
-							<h2 className='text-center font-semibold'>Total Price: ${quantity * parseInt(data.price)}</h2>
+							
 					</div>
 				</div>
 			</div>

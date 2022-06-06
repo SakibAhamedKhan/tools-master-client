@@ -6,8 +6,8 @@ const Blogs = () => {
 		<div>
 			<NavBar></NavBar>
 
-			<div className='py-32'>
-				<h2 className='text-center text-5xl font-bold mb-10'>Blogs</h2>
+			<div className=''>
+			<h2 className='pt-24 pb-6 text-center text-3xl font-bold text-accent'>Blogs</h2>
 
 				<div class="card bg-white shadow-xl mx-10">
 					<div class="card-body">

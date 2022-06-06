@@ -5,12 +5,18 @@ import banner1 from '../../Assets/images/banner1.jpg';
 import banner2 from '../../Assets/images/banner2.jpg';
 import auth from '../../firebase.init';
 import useAdmin from '../../Hooks/useAdmin';
+import Loading from '../Shared/Loading';
 
 const HomeBanner = () => {
 	const [user, loading, error] = useAuthState(auth);
-	const [admin] = useAdmin(user);
-
+	const [admin, adminLoading] = useAdmin(user);
 	const navigate = useNavigate();
+
+	if(loading || (user && adminLoading)){
+		return  <Loading></Loading>
+	}
+
+	
 	return (
 		<div class="hero min-h-screen" style={{backgroundImage: `url(${banner2})`}}>
 			<div class="hero-overlay bg-opacity-60"></div>

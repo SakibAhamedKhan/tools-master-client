@@ -1,9 +1,13 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import ManageAllOrderRow from './ManageAllOrderRow';
 
 const ManageAllOrders = () => {
+	const navigate = useNavigate();
 
 	const {data:manageOrders, isLoading, refetch} = useQuery('manageOrder', () => {
 		return fetch('https://secure-eyrie-54243.herokuapp.com/manageOrder', {
@@ -11,7 +15,17 @@ const ManageAllOrders = () => {
 				authorization: `Bearer ${localStorage.getItem('access-token')}`
 			}
 		})
-		.then(res => res.json());
+		.then(async res =>{
+			if(res.status === 403){
+				alert('errorr');
+				navigate('/login');
+				await signOut(auth);
+				
+			} else{
+				return res.json();
+			}
+			
+		});
 	})
 
 	if(isLoading){
