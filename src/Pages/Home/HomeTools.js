@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Loading from '../Shared/Loading';
 import HomeTool from './HomeTool';
+import AOS from 'aos';
 
 const HomeTools = () => {
 	const [tools, setTools] = useState([]);
@@ -34,7 +35,7 @@ const HomeTools = () => {
 					<h2 className='text-center text-5xl font-bold mb-4'>Our Tools</h2>
 					<p className='text-center text-xl text-slate-400 mb-20'>Chose your favourite tools</p>
 
-					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center'>
+					<div   className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center'>
 						{
 							toolWthReverse.map(tool => <HomeTool
 								key={tool._id}

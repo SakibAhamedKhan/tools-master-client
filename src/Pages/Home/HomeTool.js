@@ -10,7 +10,7 @@ const HomeTool = ({tool}) => {
 	}
 	return (
 		
-		<div class="card w-full bg-white shadow-xl border-2 border-white border-dashed hover:border-primary rounded-md">
+		<div data-aos="zoom-in" class="card w-full bg-white shadow-xl border-2 border-white border-dashed hover:border-primary rounded-md">
 			<figure className='h-48 mt-14 mb-6'><img className='' src={image} alt="Shoes" /></figure>
 			<div class="card-body">
 					<h2 class="card-title">{name}</h2>

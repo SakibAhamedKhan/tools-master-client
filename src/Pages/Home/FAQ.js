@@ -6,7 +6,7 @@ const FAQ = () => {
 			<h2 className='text-center text-5xl font-bold mb-10'>FAQ</h2>
 			
 
-			<div className='mx-10'>
+			<div  data-aos="flip-up" data-aos-anchor-placement="center-bottom" className='mx-10'>
 				<div class="card bg-white shadow-xl mx-auto max-w-4xl">
 					<div class="card-body">
 						<div tabindex="0" class="collapse collapse-plus border border-base-200 bg-white shadow-md rounded-box my-2">
