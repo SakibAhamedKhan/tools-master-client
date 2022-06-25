@@ -51,12 +51,12 @@ const Signup = () => {
 	}
 
 	return (
-		<div className='flex justify-center flex-col items-center my-20'>
+		<div className='flex justify-center flex-col items-center my-10 md:my-20 lg:my-20 px-10'>
 			<h2 onClick={()=> navigate('/')} className='text-3xl font-black mb-8 cursor-pointer'>Tools Master</h2>
-			<form onSubmit={handleSubmit(onSubmit)}>
-				<div class="card flex-shrink-0 w-full md:w-screen lg:w-screen max-w-sm shadow-lg bg-white px-4">
+			<form onSubmit={handleSubmit(onSubmit)} className='px-5'>
+				<div class="card flex-shrink-0 w-full md:w-screen lg:w-screen max-w-sm shadow-lg bg-white">
 					<div class="card-body">
-						<h2 className='text-xl font-bold'>Sign up your account</h2>
+						<h2 className='text-xl font-bold text-center'>Sign up your account</h2>
 						<div class="form-control">
 							<label class="label">
 								<span class="label-text">Name</span>

@@ -78,7 +78,7 @@ const AddTools = () => {
 		<div>
 			<h2 className='text-center text-accent text-xl my-2 font-semibold'>Add Tools</h2>
 
-			<div class="hero">
+			<div class="hero mb-32 md:mb-10 lg:mb-10">
 				<div class="hero-content flex-col lg:flex-row-reverse">
 					<div class="card flex-shrink-0 w-72 md:w-96 lg:w-96 shadow-2xl bg-white">
 					<div class="card-body">

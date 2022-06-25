@@ -114,7 +114,7 @@ const CheckoutForm = ({price, toolsPayment}) => {
 	// }
 
 	return (
-		<div >
+		<div>
 			<form onSubmit={handleSubmit}
 				className='overflow-x-auto'
 			>
