@@ -1,5 +1,6 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 import LoadingWIthoutFullH from '../Shared/LoadingWIthoutFullH';
 
 const CheckoutForm = ({price, toolsPayment}) => {
@@ -96,6 +97,12 @@ const CheckoutForm = ({price, toolsPayment}) => {
 			.then(res => res.json())
 			.then(data => {
 				setLoad(false);
+				Swal.fire({
+					icon: 'success',
+					title: 'Great',
+					text: `You have paid this order $${price} and buyed (${toolsPayment.tools_name}), ${toolsPayment.quantity} pieces`,
+					footer: ''
+				})
 				// setDisableBtn(false);
 			})
 			setLoad(false);

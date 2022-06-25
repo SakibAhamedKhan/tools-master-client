@@ -9,7 +9,7 @@ const Blogs = () => {
 			<div className=''>
 			<h2 className='pt-24 pb-6 text-center text-3xl font-bold text-accent'>Blogs</h2>
 
-				<div class="card bg-white shadow-xl mx-10">
+				<div class="card bg-white shadow-xl mx-4 md:mx-10 lg:mx-10">
 					<div class="card-body">
 						<p><span className='font-bold'>Q:1</span> How will you improve the performance of a React Application?</p>
 						<p><span className='font-bold'>Ans:</span> <br /> 1. First I need to reduce unnecessary code <br />

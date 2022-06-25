@@ -3,15 +3,27 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import ReactStars from 'react-rating-stars-component';
 import Swal from 'sweetalert2';
 import auth from '../../firebase.init';
+import { useQuery } from 'react-query';
+
 
 const AddReview = () => {
 	const [user, loading, error] = useAuthState(auth);
 	const [star, setStar] = useState(0);
 
+	
+	const {data, isLoading, refetch} = useQuery('userProfileForReview', () => {
+		return fetch(`https://blooming-sands-78734.herokuapp.com/profile/${user.email}`,{
+			headers:{
+				authorization: `Bearer ${localStorage.getItem('access-token')}`
+			}
+		})
+		.then(res => res.json());
+	})
+
 	const ratingChanged = async(newRating) => {
 		await setStar(newRating);
 	};
-
+	console.log('Now', data);
 	const handleStar = event => {
 		event.preventDefault();
 		const reviewDetails = event.target.reviewDetails.value;
@@ -21,7 +33,8 @@ const AddReview = () => {
 			review: reviewDetails,
 			email: user.email,
 			name: user.displayName,
-			star: star
+			star: star,
+			photo: data.photo,
 		}
 
 		fetch('https://blooming-sands-78734.herokuapp.com/addreview',{

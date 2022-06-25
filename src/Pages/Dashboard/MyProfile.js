@@ -101,8 +101,8 @@ const MyProfile = () => {
 		<div>
 			<h2 className='text-center text-accent text-xl my-2 font-semibold'>My Profile</h2>
 			
-			<div class="card bg-white shadow-xl mx-10 my-5">
-				<div class="card-body">
+			<div class="card bg-white shadow-xl mx-4 md:mx-10 lg:mx-10 my-5">
+				<div class="card-body px-5 md:px-12 lg:px-12">
 					<div class="avatar">
 						<div class="w-24 rounded-full">
 							<img src={userData?.photo? userData.photo : uploadImage} />

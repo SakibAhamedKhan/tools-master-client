@@ -5,17 +5,18 @@ import Loading from '../Shared/Loading';
 
 const Review = () => {
 
-	const {data: reviews, isLoading, refetch} = useQuery('review', () => {
+	const { data: reviews, isLoading, refetch } = useQuery('review', () => {
 		return fetch('https://blooming-sands-78734.herokuapp.com/review')
-		.then(res => res.json());
+			.then(res => res.json());
 	})
-	if(isLoading){
+	if (isLoading) {
 		return <Loading></Loading>;
 	}
 
 	let reviewLimit = [...reviews];
 	reviewLimit = reviewLimit.reverse();
-	reviewLimit = reviewLimit.slice(0,3);
+	reviewLimit = reviewLimit.slice(0, 3);
+
 	return (
 		<div className='my-20 mx-auto px-6 md:px-10 lg:px-10 max-w-screen-2xl'>
 			<h2 className='text-center text-4xl md:text-4xl lg:text-5xl font-bold mb-10'>Our Clients</h2>
@@ -25,18 +26,25 @@ const Review = () => {
 					reviewLimit?.map(review => <div class="card w-full bg-white shadow-xl"
 						key={review._id}
 					>
-					<div class="card-body items-center text-center">
-					  <h2 class="card-title">❝ {review.review} ❞</h2>
-					  <p>― {review.name}</p>
-						<ReactStars
+						<div class="card-body items-center text-center p-5">
+							<div class="avatar online my-3">
+								<div class="w-24 rounded-full">
+									<img className='' src={review.photo} />
+								</div>
+							</div>
+							
+							<h2 class="card-title">❝ {review.review} ❞</h2>
+							<p>― {review.name}</p>
+
+							<ReactStars
 								count={5}
 								size={24}
 								value={review.star}
 								activeColor="#ffd700"
 								edit={false}
 							/>,
-					</div>
-				  </div>)
+						</div>
+					</div>)
 				}
 			</div>
 		</div>
