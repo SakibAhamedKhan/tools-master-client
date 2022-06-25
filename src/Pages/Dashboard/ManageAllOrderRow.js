@@ -15,7 +15,7 @@ const ManageAllOrderRow = ({order, index, refetch}) => {
 			confirmButtonText: 'Proceed'
 		  }).then((result) => {
 			if (result.isConfirmed) {
-				fetch(`https://secure-eyrie-54243.herokuapp.com/manageOrder/${order._id}`, {
+				fetch(`https://blooming-sands-78734.herokuapp.com/manageOrder/${order._id}`, {
 				method: 'PUT',
 				headers: {
 					'content-type': 'application/json',
@@ -42,7 +42,7 @@ const ManageAllOrderRow = ({order, index, refetch}) => {
 			confirmButtonText: 'Proceed'
 		  }).then((result) => {
 			if (result.isConfirmed) {
-				fetch(`https://secure-eyrie-54243.herokuapp.com/manageOrder/${order._id}`, {
+				fetch(`https://blooming-sands-78734.herokuapp.com/manageOrder/${order._id}`, {
 					method: 'DELETE',
 					headers: {
 				'content-type': 'application/json',

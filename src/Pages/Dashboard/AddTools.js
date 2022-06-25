@@ -47,7 +47,7 @@ const AddTools = () => {
 					available_quantity: availableQuantity,
 					price: price
 				}
-				fetch(`https://secure-eyrie-54243.herokuapp.com/addTool`,{
+				fetch(`https://blooming-sands-78734.herokuapp.com/addTool`,{
 					method: 'POST',
 					headers:{
 						'content-type': 'application/json',

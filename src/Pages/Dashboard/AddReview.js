@@ -24,7 +24,7 @@ const AddReview = () => {
 			star: star
 		}
 
-		fetch('https://secure-eyrie-54243.herokuapp.com/addreview',{
+		fetch('https://blooming-sands-78734.herokuapp.com/addreview',{
 			method:'POST',
 			headers:{
 				'content-type':'application/json'

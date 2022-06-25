@@ -23,13 +23,13 @@ const PurchasePage = () => {
 
 
 	// const {data, isLoading} = useQuery('toolOne', () => {
-	//  return	fetch(`https://secure-eyrie-54243.herokuapp.com/tools/${tool_Id}`,{
+	//  return	fetch(`https://blooming-sands-78734.herokuapp.com/tools/${tool_Id}`,{
 	// 		method: 'GET'
 	// 	})
 	// 	.then(res => res.json())
 	// }) 
 	useEffect( () => {
-		fetch(`https://secure-eyrie-54243.herokuapp.com/tools/${tool_Id}`)
+		fetch(`https://blooming-sands-78734.herokuapp.com/tools/${tool_Id}`)
 		.then(res => res.json())
 		.then(data => {
 			setData(data);
@@ -84,7 +84,7 @@ const PurchasePage = () => {
 				tools_price: data.price,
 				tools_id: data._id
 			}
-			fetch('https://secure-eyrie-54243.herokuapp.com/orders', {
+			fetch('https://blooming-sands-78734.herokuapp.com/orders', {
 				method: 'POST',
 				headers:{
 					'content-type':'application/json'

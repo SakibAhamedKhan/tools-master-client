@@ -1,29 +1,39 @@
 import { signOut } from 'firebase/auth';
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { NavLink, Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import './Navbar.css';
 
-const NavBar = () => {
+const HomeNavBar = () => {
 	const [user, loading, error] = useAuthState(auth);
+    const [navStyle, setNavStyle] = useState(false);
+ 
+    const changeNavBackground = () => {
+		if(window.scrollY >= 30){
+			setNavStyle(true);
+		} else{
+			setNavStyle(false);
+		}
+	}
+    window.addEventListener('scroll', changeNavBackground);
 
 	const menuItems = <>
-		<li className='text-white font-semibold hover:text-primary'><NavLink to='/'>Home</NavLink></li>
-		<li className='text-white font-semibold hover:text-primary'><NavLink to='/blogs'>Blogs</NavLink></li>
-		<li className='text-white font-semibold hover:text-primary'><NavLink to='/myPortfilo'>My Portfilo</NavLink></li>
+		<li className={`text-white font-semibold ${navStyle? 'hover:text-primary' :''}`}><NavLink to='/'>Home</NavLink></li>
+		<li className={`text-white font-semibold ${navStyle? 'hover:text-primary' :''}`}><NavLink to='/blogs'>Blogs</NavLink></li>
+		<li className={`text-white font-semibold ${navStyle? 'hover:text-primary' :''}`}><NavLink to='/myPortfilo'>My Portfilo</NavLink></li>
 		{
 			user?
 			<>
-				<li className='text-white font-semibold hover:text-primary'><NavLink to='/dashboard'>Dashboard</NavLink></li>
-				<li className='text-white font-semibold hover:text-primary'><p onClick={() => signOut(auth)}>Logout</p></li>
+				<li className={`text-white font-semibold ${navStyle? 'hover:text-primary' :''}`}><NavLink to='/dashboard'>Dashboard</NavLink></li>
+				<li className={`text-white font-semibold ${navStyle? 'hover:text-primary' :''}`}><p onClick={() => signOut(auth)}>Logout</p></li>
 			</>
 			:
 			<li className='text-white font-semibold'><NavLink to='/login'>Login</NavLink></li>
 		}
 	</>
 	return (
-		<div class="navbar bg-gradient-to-r from-accent to-neutral fixed z-10">
+		<div class={`navbar ${navStyle ? 'bg-gradient-to-r from-accent to-neutral' : 'bg-transparent'} sticky top-0 z-10 `}>
 			<div class="navbar-start">
 				<div class="dropdown">
 				<label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -52,4 +62,4 @@ const NavBar = () => {
 	);
 };
 
-export default NavBar;
+export default HomeNavBar;

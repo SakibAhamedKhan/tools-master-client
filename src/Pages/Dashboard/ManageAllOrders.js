@@ -10,7 +10,7 @@ const ManageAllOrders = () => {
 	const navigate = useNavigate();
 
 	const {data:manageOrders, isLoading, refetch} = useQuery('manageOrder', () => {
-		return fetch('https://secure-eyrie-54243.herokuapp.com/manageOrder', {
+		return fetch('https://blooming-sands-78734.herokuapp.com/manageOrder', {
 			headers:{
 				authorization: `Bearer ${localStorage.getItem('access-token')}`
 			}

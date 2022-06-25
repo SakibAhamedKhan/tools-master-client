@@ -8,7 +8,7 @@ const HomeTools = () => {
 	const [loading, setLoading] = useState(true);
 	let toolWithSkip;
 	useEffect( () =>{
-		fetch('https://secure-eyrie-54243.herokuapp.com/tools')
+		fetch('https://blooming-sands-78734.herokuapp.com/tools')
 		.then(res => res.json())
 		.then(data => {
 			setTools(data);
@@ -32,8 +32,8 @@ const HomeTools = () => {
 			{
 				toolWthReverse ?
 				<div className='my-20 mx-auto px-6 md:px-10 lg:px-10 max-w-screen-2xl'>
-					<h2 className='text-center text-5xl font-bold mb-4'>Our Tools</h2>
-					<p className='text-center text-xl text-slate-400 mb-20'>Chose your favourite tools</p>
+					<h2 className='text-center text-4xl md:text-4xl lg:text-5xl font-bold mb-4'>Our Tools</h2>
+					<p className='text-center text-xl text-slate-400 mb-10 md:mb-10 lg:mb-10'>Chose your favourite tools</p>
 
 					<div   className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center'>
 						{

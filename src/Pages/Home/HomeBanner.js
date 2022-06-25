@@ -31,7 +31,7 @@ const HomeBanner = () => {
 	};
 
 	return (
-		<div class="hero min-h-screen" style={{ backgroundImage: `url(${banner2})` }}>
+		<div class="hero min-h-screen mt-[-66px]" style={{ backgroundImage: `url(${banner2})` }}>
 
 			<Particles
 				id="tsparticles"
@@ -105,7 +105,7 @@ const HomeBanner = () => {
 					detectRetina: true,
 				}}
 			/>
-			<div class="hero-overlay bg-opacity-60"></div>
+			<div class="hero-overlay bg-opacity-25"></div>
 			<div class="hero-content text-center text-neutral-content">
 				<div class="max-w-md">
 					<h1 class="mb-5 text-5xl font-bold text-white">Tools Need?</h1>
@@ -122,7 +122,7 @@ const HomeBanner = () => {
 							</>
 							:
 							<button onClick={() => {
-								navigate('/signup');
+								navigate('/login');
 							}} class="btn btn-primary text-white bg-gradient-to-r from-primary to-secondary">Get Started</button>
 					}
 				</div>

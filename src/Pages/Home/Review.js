@@ -6,7 +6,7 @@ import Loading from '../Shared/Loading';
 const Review = () => {
 
 	const {data: reviews, isLoading, refetch} = useQuery('review', () => {
-		return fetch('https://secure-eyrie-54243.herokuapp.com/review')
+		return fetch('https://blooming-sands-78734.herokuapp.com/review')
 		.then(res => res.json());
 	})
 	if(isLoading){
@@ -18,7 +18,7 @@ const Review = () => {
 	reviewLimit = reviewLimit.slice(0,3);
 	return (
 		<div className='my-20 mx-auto px-6 md:px-10 lg:px-10 max-w-screen-2xl'>
-			<h2 className='text-center text-5xl font-bold mb-10'>Our Clients</h2>
+			<h2 className='text-center text-4xl md:text-4xl lg:text-5xl font-bold mb-10'>Our Clients</h2>
 
 			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
 				{
