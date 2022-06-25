@@ -31,11 +31,11 @@ const HomeTools = () => {
 		<>
 			{
 				toolWthReverse ?
-				<div className='my-20 mx-auto px-6 md:px-10 lg:px-10 max-w-screen-2xl'>
+				<div className='my-20 mx-auto px-6 md:px-10 lg:px-10 max-w-screen-2xl z-0 relative'>
 					<h2 className='text-center text-4xl md:text-4xl lg:text-5xl font-bold mb-4'>Our Tools</h2>
 					<p className='text-center text-xl text-slate-400 mb-10 md:mb-10 lg:mb-10'>Chose your favourite tools</p>
 
-					<div   className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center'>
+					<div   className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 justify-items-center'>
 						{
 							toolWthReverse.map(tool => <HomeTool
 								key={tool._id}

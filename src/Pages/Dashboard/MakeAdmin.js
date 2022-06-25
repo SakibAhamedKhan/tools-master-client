@@ -52,7 +52,7 @@ const MakeAdmin = () => {
 	return (
 		<div>
 			<h2 className='text-center text-accent text-xl my-2 font-semibold'>Make Admin</h2>
-			<div class="overflow-x-auto mx-4">
+			<div class="overflow-x-auto mx-4 mb-5">
 
 				<table class="table-compact w-full ">
 					<thead className='bg-accent text-white'>
@@ -72,9 +72,9 @@ const MakeAdmin = () => {
 								<td className='text-center'>
 									{
 										(user?.role === 'admin') ?
-										<button  className='btn btn-success btn-xs text-white whitespace-nowrap'>Admin</button>
+										<button  className='btn btn-success btn-sm text-white whitespace-nowrap'>Admin</button>
 										:
-										<button onClick={() => handleMakeAdmin(user)} className='btn btn-accent btn-xs text-white whitespace-nowrap'>Make Admin</button>
+										<button onClick={() => handleMakeAdmin(user)} className='btn btn-accent btn-sm text-white whitespace-nowrap'>Make Admin</button>
 									}
 								</td>
 							</tr>)

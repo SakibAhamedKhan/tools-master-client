@@ -73,8 +73,8 @@ const MyOrderRow = ({order, index, refetch}) => {
 			</td>
 			<td>({order.quantity}) | (${parseInt(order.quantity) * parseInt(order.tools_price)})</td> 
 			<td>
-				{(order.paid)?<button disabled className='btn btn-success btn-xs px-3 text-white'>Paid</button> :
-					<Link to={`/dashboard/payment/${order._id}`}><button className='whitespace-nowrap btn btn-success btn-xs px-3 text-white py-1'>Pay Now</button></Link>
+				{(order.paid)?<button disabled className='btn btn-success btn-sm px-3 text-white'>Paid</button> :
+					<Link to={`/dashboard/payment/${order._id}`}><button className='whitespace-nowrap btn btn-success btn-sm px-3 text-white py-1'>Pay Now</button></Link>
 				}
 			</td> 
 			<td>
@@ -83,16 +83,16 @@ const MyOrderRow = ({order, index, refetch}) => {
 					<div className='text-center'>
 						{
 							(order?.shipping)?
-							<button className='btn btn-success btn-xs px-3 py-1 text-white'>Shipped</button>
+							<button className='btn btn-success btn-sm px-3 py-1 text-white'>Shipped</button>
 							:
-							<button className='btn btn-primary btn-xs px-3 py-1 text-white'>Processing</button>
+							<button className='btn btn-primary btn-sm px-3 py-1 text-white'>Processing</button>
 						}
 						<p className='whitespace-nowrap text-green-500 pt-2'>TrxID: {order.transactionId}</p>
 					</div>
 					
 					:
 					<div className='flex justify-center'>
-						<button onClick={HandleOrderCancel} className='btn btn-neutral btn-xs px-3 text-white '>Cancel</button>
+						<button onClick={HandleOrderCancel} className='btn btn-neutral btn-sm px-3 text-white '>Cancel</button>
 					</div>
 				}
 			</td>

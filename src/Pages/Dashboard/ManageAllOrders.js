@@ -27,7 +27,13 @@ const ManageAllOrders = () => {
 			
 		});
 	})
+	let manageOrderReverse;
+	if(manageOrders !== undefined){
+		manageOrderReverse = [...manageOrders];
+		manageOrderReverse = manageOrderReverse.reverse();
 
+	}
+	
 	if(isLoading){
 		return <Loading></Loading>;
 	}
@@ -36,7 +42,7 @@ const ManageAllOrders = () => {
 			<h2 className='text-center text-accent text-xl my-2 font-semibold'>Manage All Orders</h2>
 
 			
-			<div class="overflow-x-auto mx-4">
+			<div class="overflow-x-auto mx-4 mb-5">
 
 				<table class="table-compact w-full ">
 					<thead className='bg-accent text-white'>
@@ -53,7 +59,7 @@ const ManageAllOrders = () => {
 					</thead> 
 					<tbody className='bg-white'>
 						{
-							manageOrders?.map((order,index) => <ManageAllOrderRow 
+							manageOrderReverse?.map((order,index) => <ManageAllOrderRow 
 								key={order._id}
 								order={order}
 								index={index}

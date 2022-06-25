@@ -180,7 +180,7 @@ const PurchasePage = () => {
 							</div>
 							<h2 className='text-center font-semibold mb-3'>Total Price: ${quantity * parseInt(data.price)}</h2>
 
-							<input disabled={btnDisable} type="submit" value={btnDisable ? 'Check Limit of Purchase' : 'Purchase'} className={`${btnDisable ? 'btn-accent' : 'bg-gradient-to-r from-primary to-secondary border-none'} btn w-fit px-16 block mx-auto text-white `} />
+							<button disabled={btnDisable} type="submit" className={`${btnDisable ? 'btn-accent' : 'bg-gradient-to-r from-primary to-secondary border-none'} btn w-fit px-16 block mx-auto text-white `}>{btnDisable ? 'Check Limit of Purchase' : 'Purchase'}</button>
 						</form>
 
 					</div>

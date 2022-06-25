@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from '../Home/NavBar';
 import profilePic from '../../Assets/images/Sakib_Profile2.png';
+import Footer from '../Shared/Footer';
 
 const MyPortfilo = () => {
 
@@ -12,7 +13,7 @@ const MyPortfilo = () => {
 			<h2 className='pt-24 pb-6 text-center text-3xl font-bold text-accent'>My Protfilo</h2>
 
 
-			<div class="card bg-white shadow-xl mx-4 md:mx-10 lg:mx-10">
+			<div class="card bg-white shadow-xl mx-4 md:mx-10 lg:mx-10 mb-20">
 				<div class="card-body px-5 md:px-12 lg:px-12">
 
 					<div class="avatar mb-2 flex justify-center md:justify-start lg:justify-start">
@@ -110,9 +111,10 @@ const MyPortfilo = () => {
 							</ul>
 						</div>
 					</p>
-					<a href='https://drive.google.com/file/d/12yeC6I8S1mNrijyCmIvQ09OPJsChOuLd/view?usp=sharing' className='btn btn-accent w-fit text-white' target='_blank'>Download My CV</a>
+					<button className='w-fit p-0 shadow-none'><a href='https://drive.google.com/file/d/12yeC6I8S1mNrijyCmIvQ09OPJsChOuLd/view?usp=sharing' className='btn btn-accent w-fit text-white' target='_blank'>Download My CV</a></button>
 				</div>
 			</div>
+			<Footer></Footer>
 		</div>
 	);
 };

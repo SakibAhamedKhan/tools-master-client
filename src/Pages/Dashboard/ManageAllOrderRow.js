@@ -77,20 +77,20 @@ const ManageAllOrderRow = ({order, index, refetch}) => {
 					<>
 						{
 							(order?.shipping) ?
-							<button className='btn btn-xs btn-success text-white'>Shipped</button>
+							<button className='btn btn-sm btn-success text-white'>Shipped</button>
 							:
-							<button onClick={() => handleShipping()} className='btn btn-xs btn-error text-white'>Pending</button>
+							<button onClick={() => handleShipping()} className='btn btn-sm btn-error text-white'>Pending</button>
 						}
 					</>
 				:
-				<button className='btn btn-warning btn-xs text-white'>Unpaid</button>
+				<button className='btn btn-warning btn-sm text-white'>Unpaid</button>
 			}</td> 
 			<td>
 				{
 					(order?.paid)?
-					<button  className='btn btn-xs btn-info text-white whitespace-nowrap'>Already paid</button>
+					<button  className='btn btn-sm btn-info text-white whitespace-nowrap'>Already paid</button>
 					:
-					<button onClick={() => handleOrderDelete()} className='btn btn-xs btn-primary text-white'>Delete</button>
+					<button onClick={() => handleOrderDelete()} className='btn btn-sm btn-primary text-white'>Delete</button>
 				}
 			</td>
 		</tr>

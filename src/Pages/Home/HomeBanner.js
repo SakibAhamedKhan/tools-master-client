@@ -2,12 +2,13 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import banner1 from '../../Assets/images/banner1.jpg';
-import banner2 from '../../Assets/images/banner2.jpg';
+import banner2 from '../../Assets/images/banner3.jpg';
 import auth from '../../firebase.init';
 import useAdmin from '../../Hooks/useAdmin';
 import Loading from '../Shared/Loading';
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
+import './HomeBanner.css';
 
 const HomeBanner = () => {
 	const [user, loading, error] = useAuthState(auth);
@@ -31,7 +32,7 @@ const HomeBanner = () => {
 	};
 
 	return (
-		<div class="hero min-h-screen mt-[-66px]" style={{ backgroundImage: `url(${banner2})` }}>
+		<div class="hero min-h-screen mt-[-66px] z-0" style={{ backgroundImage: `url(${banner2}) ` }}>
 
 			<Particles
 				id="tsparticles"
@@ -115,15 +116,24 @@ const HomeBanner = () => {
 							<>
 								{admin && <button onClick={() => {
 									navigate('/dashboard/addTool');
-								}} class="btn btn-primary text-white bg-gradient-to-r from-primary to-secondary">Add an new Tool</button>}
+								}} class="animated-button1"><span></span>
+								<span></span>
+								<span></span>
+								<span></span>Add an new Tool</button>}
 								{!admin && <button onClick={() => {
 									navigate('/dashboard/myorders');
-								}} class="btn btn-primary text-white bg-gradient-to-r from-primary to-secondary">Explore All Order</button>}
+								}} class=" animated-button1"><span></span>
+								<span></span>
+								<span></span>
+								<span></span>Explore All Order</button>}
 							</>
 							:
 							<button onClick={() => {
 								navigate('/login');
-							}} class="btn btn-primary text-white bg-gradient-to-r from-primary to-secondary ">Get Started</button>
+							}} class="animated-button1"><span></span>
+							<span></span>
+							<span></span>
+							<span></span>Get Started</button>
 					}
 				</div>
 			</div>

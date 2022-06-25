@@ -38,7 +38,7 @@ const ManageToolsRow = ({tool, index, refetch}) => {
 			<td>{tool.min_quantity}</td>
 			<td>{tool.price}</td>
 			<td className='flex justify-center'>
-				<button onClick={handleToolDelete} className='btn btn-xs btn-accent text-white'>Delete</button>
+				<button onClick={handleToolDelete} className='btn btn-sm btn-accent text-white'>Delete</button>
 			</td>
 		</tr>
 	);

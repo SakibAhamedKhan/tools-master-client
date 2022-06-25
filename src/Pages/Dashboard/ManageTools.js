@@ -17,7 +17,7 @@ const ManageTools = () => {
 		<div>
 			<h2 className='text-center text-accent text-xl my-2 font-semibold'>Manage Tools</h2>
 
-			<div class="overflow-x-auto mx-4">
+			<div class="overflow-x-auto mx-4 mb-5">
 
 				<table class="table-compact w-full ">
 					<thead className='bg-accent text-white'>

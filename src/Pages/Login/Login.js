@@ -136,7 +136,7 @@ const Login = () => {
 								{errors.password?.type === 'minLength' && <span class="label-text-alt text-red-500">{errors.password.message}</span>}
 							</label>
 							<label class="label">
-								<button  type='button' onClick={() => setShowModal(true)} text-red-500 class="label-text-alt link link-hover">Forgot password?</button>
+								<div  type='div' onClick={() => setShowModal(true)} text-red-500 class="label-text-alt link link-hover shadow-none">Forgot password?</div>
 							</label>
 						</div>
 						{
