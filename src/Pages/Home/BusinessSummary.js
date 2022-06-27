@@ -10,9 +10,9 @@ const BusinessSummary = () => {
 	return (
 		<>
 			<h2 className='text-center text-4xl md:text-4xl lg:text-5xl font-bold mb-10 md:mb-10 lg:mb-10 mt-10'>Summary</h2>
-			<div class="hero h-[400px]" style={{ backgroundImage: `url(${banner})` }}>
+			<div class="hero" style={{ backgroundImage: `url(${banner})` }}>
 				<div class="hero-overlay bg-opacity-50"></div>
-				<div class="hero-content text-center text-neutral-content">
+				<div class="hero-content text-center text-neutral-content py-8 md:py-10 lg:py-20">
 					<div className=''>
 
 						{/* <div className='flex justify-center flex-col items-center my-32 overflow-x-auto'>

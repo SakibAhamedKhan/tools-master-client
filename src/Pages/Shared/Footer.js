@@ -21,22 +21,22 @@ const Footer = () => {
 		// 	</div>
 		// </footer>
 		<>
-			<footer class="footer p-10 bg-base-200 text-base-content">
-				<div class="grid grid-cols-1 gap-4 justify-self-center">
+			<footer class="footer p-10 bg-base-200 text-base-content ">
+				<div class="grid grid-cols-1 gap-4">
 					<span class="footer-title">Services</span>
 					<a class="link link-hover font-semibold">Order</a>
 					<a class="link link-hover font-semibold">Guarantee</a>
 					<a class="link link-hover font-semibold">Marketing</a>
 					<a class="link link-hover font-semibold">Advertisement</a>
 				</div>
-				<div class="grid grid-cols-1 gap-4 justify-self-center">
+				<div class="grid grid-cols-1 gap-4">
 					<span class="footer-title">Company</span>
 					<a class="link link-hover font-semibold">About us</a>
 					<a class="link link-hover font-semibold">Contact</a>
 					<a class="link link-hover font-semibold">Carrier</a>
 					<a class="link link-hover font-semibold">Press kit</a>
 				</div>
-				<div class="grid grid-cols-1 gap-4 justify-self-center">
+				<div class="grid grid-cols-1 gap-4">
 					<span class="footer-title">Legal</span>
 					<a class="link link-hover font-semibold">Terms of use</a>
 					<a class="link link-hover font-semibold">Privacy policy</a>

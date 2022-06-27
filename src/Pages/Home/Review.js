@@ -21,28 +21,29 @@ const Review = () => {
 		<div className='my-20 mx-auto px-6 md:px-10 lg:px-10 max-w-screen-2xl'>
 			<h2 className='text-center text-4xl md:text-4xl lg:text-5xl font-bold mb-10'>Our Clients</h2>
 
-			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
+			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 '>
 				{
-					reviewLimit?.map(review => <div class="card w-full bg-white shadow-xl"
+					reviewLimit?.map(review => <div class="card w-full bg-white rounded shadow-md max-w-xs justify-self-center"
 						key={review._id}
 					>
-						<div class="card-body items-center text-center p-5">
+						<div class="items-center text-center p-2 md:p-3 lg:p-4">
 							<div class="avatar online my-3">
 								<div class="w-24 rounded-full">
 									<img className='' src={review.photo} />
 								</div>
 							</div>
-							
-							<h2 class="card-title">❝ {review.review} ❞</h2>
-							<p>― {review.name}</p>
 
-							<ReactStars
-								count={5}
-								size={24}
-								value={review.star}
-								activeColor="#ffd700"
-								edit={false}
-							/>,
+							<h2 class="card-title text-sm md:text-md lg:text-md text-center block mx-auto">❝ {review.review} ❞</h2>
+							<p>― {review.name}</p>
+							<div className='flex justify-center'>
+								<ReactStars
+									count={5}
+									size={24}
+									value={review.star}
+									activeColor="#ffd700"
+									edit={false}
+								/>
+							</div>
 						</div>
 					</div>)
 				}
