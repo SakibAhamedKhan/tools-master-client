@@ -21,9 +21,11 @@
 ~~~
  React 
  React firebase Hook
- React Routere
+ React Router
  Firebase
  Heroku
+ Tailwind CSS
+ Daisy UI
  Html
  CSS 
  JS
